@@ -316,38 +316,38 @@ class Route extends Bootstrap {
 
     // Rotas MatMed
     $routes['cadastroMatMed'] = array(
-      'route' => '/cadastroMatMed',
-      'controller' => 'MatMedController',
+      'route' => '/cadastroMatmed',
+      'controller' => 'MatmedController',
       'action' => 'CadastroMatMed'
     );
 
     $routes['DadosMatMed'] = array(
-      'route' => '/DadosMatMed',
-      'controller' => 'MatMedController',
+      'route' => '/DadosMatmed',
+      'controller' => 'MatmedController',
       'action' => 'DadosMatMed'
     );
     
     $routes['localizarMatMed'] = array(
-      'route' => '/LocalizarMatMed',
-      'controller' => 'MatMedController',
+      'route' => '/LocalizarMatmed',
+      'controller' => 'MatmedController',
       'action' => 'LocalizarMatMed'
     );
 
     $routes['InserirMatMed'] = array(
-      'route' => '/inserirMatMed',
-      'controller' => 'MatMedController',
+      'route' => '/inserirMatmed',
+      'controller' => 'MatmedController',
       'action' => 'inserirMatMed'
     );
 
     $routes['AlterarMatMed'] = array(
-      'route' => '/AlterarMatMed',
-      'controller' => 'MatMedController',
+      'route' => '/AlterarMatmed',
+      'controller' => 'MatmedController',
       'action' => 'AlterarMatMed'
     );
 
     $routes['ExcluirMatMed'] = array(
-      'route' => '/ExcluirMatMed',
-      'controller' => 'MatMedController',
+      'route' => '/ExcluirMatmed',
+      'controller' => 'MatmedController',
       'action' => 'excluirMatMed'
     );        
 

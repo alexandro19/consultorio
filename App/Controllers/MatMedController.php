@@ -7,10 +7,10 @@ use MF\Controller\Action;
 use MF\Model\Container;
 session_start();
 
-class MatMedController extends Action
+class MatmedController extends Action
 {
   public function CadastroMatMed(){
-    $this->render('matMed');
+    $this->render('matMeds');
   }
 
   public function LocalizarMatMed(){
@@ -20,7 +20,7 @@ class MatMedController extends Action
     $MatMed->__set('descricao', $localizar);
     $MatMeds = $MatMed->localizar();
     $this->view->listaMatMeds = $MatMeds;
-    $this->render('matMed');    
+    $this->render('matMeds');    
   }
 
   public function DadosMatMed(){
@@ -29,10 +29,10 @@ class MatMedController extends Action
     if (isset($_GET['id']) and $_GET['id'] > 0) {
       $MatMeds->__set('id', $_GET['id']);
       $this->view->dadosMatMed = $MatMeds->localizarID();
-      $this->view->operacao = '/AlterarMatMed';  
+      $this->view->operacao = '/AlterarMatmed';  
     }
     else{
-      $this->view->operacao = '/inserirMatMed';
+      $this->view->operacao = '/inserirMatmed';
     }
 
     $this->render('dadosMatMed');
