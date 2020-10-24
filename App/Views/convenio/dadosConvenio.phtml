@@ -1,0 +1,48 @@
+<?php include('../App/Views/index/header.phtml') ?>
+  
+  <div class="container">
+
+    <form id="dados" method="POST" action="<?php echo $this->view->operacao; ?>">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="id" name="id" placeholder="ID" value="<?= isset($this->view->dadosConvenio['0']['id']) ? $this->view->dadosConvenio['0']['id'] : '' ?>" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="descricao" name="descricao" placeholder="Digite o convênio" value="<?= isset($this->view->dadosConvenio['0']['descricao']) ? $this->view->dadosConvenio['0']['descricao'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <select class="form-control form-control-sm" name="status" id="status" value= "<?= isset($this->view->dadosConvenio['0']['status']) ? $this->view->dadosConvenio['0']['status'] : '' ?>">
+            <option value="A">Ativo</option>
+            <option value="I">Inativo</option>
+          </select>
+        </div>
+      </div>       
+       
+      <div class="form-row">
+      <div class="form-group col-md-4">
+        <button type="submit" class="btn btn-primary mb-2">
+          <?php if(isset($this->view->operacao) and ($this->view->operacao == '/inserirConvenio') ) {
+                  echo "Salvar";
+                }
+                else if(isset($this->view->operacao) and ($this->view->operacao == '/AlterarConvenio') ) {
+                  echo "Alterar";
+                } 
+          ?>
+        </button>
+        <?php if(isset($this->view->operacao) and ($this->view->operacao == '/AlterarConvenio') ) { ?>
+          <a class="btn btn-danger mb-2" href="/ExcluirConvenio?id=<?= $this->view->dadosConvenio['0']['id'] ?>" >Excluir</a>
+        <?php } ?>
+      </div>
+      </div>
+
+
+    </form>
+  </div>
+
+<?php include('../App/Views/index/footer.phtml') ?>

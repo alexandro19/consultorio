@@ -1,0 +1,237 @@
+<?php include('../App/Views/index/header.phtml') ?>
+  
+  <div class="container">
+
+    <form id="dados" method="POST" action="<?php echo $this->view->operacao; ?>">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="id" name="id" placeholder="ID" value="<?= isset($this->view->dadosPrestador['0']['id']) ? $this->view->dadosPrestador['0']['id'] : '' ?>" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="nome" name="nome" placeholder="Nome" value="<?= isset($this->view->dadosPrestador['0']['nome']) ? $this->view->dadosPrestador['0']['nome'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="razao_social" name="razao_social" placeholder="Razão social" value="<?= isset($this->view->dadosPrestador['0']['razao_social']) ? $this->view->dadosPrestador['0']['razao_social'] : '' ?>">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <select class="form-control form-control-sm" name="tipo" id="tipo" value= "<?= isset($this->view->dadosPrestador['0']['tipo']) ? $this->view->dadosPrestador['0']['tipo'] : '' ?>">
+            <option value="">  Tipo de pessoa: </option>
+            <option value="F"> Física          </option>
+            <option value="J"> jurídica        </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <select class="form-control form-control-sm" name="status" id="status" value= "<?= isset($this->view->dadosPrestador['0']['status']) ? $this->view->dadosPrestador['0']['status'] : '' ?>">
+            <option value="A">Ativo</option>
+            <option value="I">Inativo</option>
+          </select>
+        </div>
+      </div>
+     
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <select class="form-control form-control-sm" name="id_especialidade" id="id_especialidade" value="<?= isset($this->view->dadosPrestador['0']['id_especialidade']) ? $this->view->dadosPrestador['0']['id_especialidade'] : '' ?>"> 
+            <option value="">Especialidades:</option> 
+            <?php if (isset($this->view->especialidades)) {
+              foreach ($this->view->especialidades as $key => $value) { ?>
+                <option value="<?=$value['id'] ?>"><?=$value['descricao'] ?></option> 
+             <?php 
+              }
+            } ?>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <select class="form-control form-control-sm" name="id_clinica" id="id_clinica" value="<?= isset($this->view->dadosPrestador['0']['id_clinica']) ? $this->view->dadosPrestador['0']['id_clinica'] : '' ?>"> 
+            <option value="">Clinica:</option> 
+            <?php if (isset($this->view->clinicas)) {
+              foreach ($this->view->clinicas as $key => $value) { ?>
+                <option value="<?=$value['id'] ?>"><?=$value['descricao'] ?></option> 
+             <?php 
+              }
+            } ?>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <select class="form-control form-control-sm" name="id_plano" id="id_plano" value="<?= isset($this->view->dadosPrestador['0']['id_plano']) ? $this->view->dadosPrestador['0']['id_plano'] : '' ?>"> 
+            <option value="0">Planos:</option> 
+            <?php if (isset($this->view->planos)) {
+              foreach ($this->view->planos as $key => $value) { ?>
+                <option value="<?=$value['id'] ?>"><?=$value['descricao'] ?></option> 
+             <?php 
+              }
+            } ?>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <select class="form-control form-control-sm" name="id_convenio" id="id_convenio" value="<?= isset($this->view->dadosPrestador['0']['id_convenio']) ? $this->view->dadosPrestador['0']['id_convenio'] : '' ?>"> 
+            <option value="0">Convênios:</option> 
+            <?php if (isset($this->view->convenios)) {
+              foreach ($this->view->convenios as $key => $value) { ?>
+                <option value="<?=$value['id'] ?>"><?=$value['descricao'] ?></option> 
+             <?php 
+              }
+            } ?>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input type="text" class="form-control form-control-sm" id="crm" name="crm" placeholder="CRM" value="<?= isset($this->view->dadosPrestador['0']['crm']) ? $this->view->dadosPrestador['0']['crm'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input type="text" class="form-control form-control-sm" id="cpf" name="cpf" placeholder="C.P.F" value="<?= isset($this->view->dadosPrestador['0']['cpf']) ? $this->view->dadosPrestador['0']['cpf'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input type="text" class="form-control form-control-sm" id="cnpj" name="cnpj" placeholder="CNPJ" value="<?= isset($this->view->dadosPrestador['0']['cnpf']) ? $this->view->dadosPrestador['0']['cnpj'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input type="text" class="form-control form-control-sm" id="rg" name="rg" placeholder="R.G" value="<?= isset($this->view->dadosPrestador['0']['rg']) ? $this->view->dadosPrestador['0']['rg'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input type="text" class="form-control form-control-sm" id="insc_estadual" name="insc_estadual" placeholder="Inscrição estadual" value="<?= isset($this->view->dadosPrestador['0']['insc_estadual']) ? $this->view->dadosPrestador['0']['insc_estadual'] : '' ?>">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="cep" name="cep" placeholder="C.E.P" value="<?= isset($this->view->dadosPrestador['0']['cep']) ? $this->view->dadosPrestador['0']['cep'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="endereco" name="endereco" placeholder="Endereço" value="<?= isset($this->view->dadosPrestador['0']['endereco']) ? $this->view->dadosPrestador['0']['endereco'] : '' ?>">
+        </div>
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="numero" name="numero" placeholder="Número" value="<?= isset($this->view->dadosPrestador['0']['numero']) ? $this->view->dadosPrestador['0']['numero'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="complemento" name="complemento" placeholder="Complemento" value="<?= isset($this->view->dadosPrestador['0']['complemento']) ? $this->view->dadosPrestador['0']['complemento'] : '' ?>">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="bairro" name="bairro" placeholder="Bairro" value="<?= isset($this->view->dadosPrestador['0']['bairro']) ? $this->view->dadosPrestador['0']['bairro'] : '' ?>">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control form-control-sm" id="cidade" name="cidade" placeholder="Cidade" value="<?= isset($this->view->dadosPrestador['0']['cidade']) ? $this->view->dadosPrestador['0']['cidade'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <select class="form-control form-control-sm" name="uf" id="uf" value="<?= isset($this->view->dadosPrestador['0']['uf']) ? $this->view->dadosPrestador['0']['uf'] : '' ?>"> 
+            <option value="">     Selecione o Estado   </option> 
+            <option value="ac">   Acre                 </option> 
+            <option value="al">   Alagoas              </option> 
+            <option value="am">   Amazonas             </option> 
+            <option value="ap">   Amapá                </option> 
+            <option value="ba">   Bahia                </option> 
+            <option value="ce">   Ceará                </option> 
+            <option value="df">   Distrito Federal     </option> 
+            <option value="es">   Espírito Santo       </option> 
+            <option value="go">   Goiás                </option> 
+            <option value="ma">   Maranhão             </option> 
+            <option value="mt">   Mato Grosso          </option> 
+            <option value="ms">   Mato Grosso do Sul   </option> 
+            <option value="mg">   Minas Gerais         </option> 
+            <option value="pa">   Pará                 </option> 
+            <option value="pb">   Paraíba              </option> 
+            <option value="pr">   Paraná               </option> 
+            <option value="pe">   Pernambuco           </option> 
+            <option value="pi">   Piauí                </option> 
+            <option value="rj">   Rio de Janeiro       </option> 
+            <option value="rn">   Rio Grande do Norte  </option> 
+            <option value="ro">   Rondônia             </option> 
+            <option value="rs">   Rio Grande do Sul    </option> 
+            <option value="rr">   Roraima              </option> 
+            <option value="sc">   Santa Catarina       </option> 
+            <option value="se">   Sergipe              </option> 
+            <option value="sp">   São Paulo            </option> 
+            <option value="to">   Tocantins            </option> 
+          </select>
+        </div>
+      </div>      
+      
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="telefone" name="telefone" placeholder="Telefone" value="<?= isset($this->view->dadosPrestador['0']['telefone']) ? $this->view->dadosPrestador['0']['telefone'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="celular" name="celular" placeholder="Celular" value="<?= isset($this->view->dadosPrestador['0']['celular']) ? $this->view->dadosPrestador['0']['celular'] : '' ?>">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control form-control-sm" id="email" name="email" placeholder="E-mail" value="<?= isset($this->view->dadosPrestador['0']['email']) ? $this->view->dadosPrestador['0']['email'] : '' ?>">
+        </div>
+      </div>
+      
+
+      <div class="form-row">
+      <div class="form-group col-md-4">
+        <button type="submit" class="btn btn-primary mb-2">
+          <?php if(isset($this->view->operacao) and ($this->view->operacao == '/inserirPrestador') ) {
+                  echo "Salvar";
+                }
+                else if(isset($this->view->operacao) and ($this->view->operacao == '/AlterarPrestador') ) {
+                  echo "Alterar";
+                } 
+          ?>
+        </button>
+        <?php if(isset($this->view->operacao) and ($this->view->operacao == '/AlterarPrestador') ) { ?>
+          <a class="btn btn-danger mb-2" href="/ExcluirPrestador?id=<?= $this->view->dadosPrestador['0']['id'] ?>" >Excluir</a>
+        <?php } ?>
+      </div>
+      </div>
+
+
+    </form>
+  </div>
+
+<?php include('../App/Views/index/footer.phtml') ?>

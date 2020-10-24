@@ -1,0 +1,46 @@
+<?php include('../App/Views/index/header.phtml') ?>
+  
+  <div class="Container">
+
+    <form method="POST" action="/LocalizarPrestador">
+      <div class="input-group">
+        <input type="text" name="localizar" class="form-control border-1" placeholder="Localizar prestadores..." aria-label=" Search" aria-describedby="basic-addon2" style="width: 300px" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div> 
+          <div class="col">
+            <a class="btn btn-outline-primary" name="cadastrar" href="/DadosPrestador">Novo prestador</a>
+          </div>
+      </div>      
+    </form>
+    
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Prestador</th>
+          <th scope="col">Endereço</th>
+          <th scope="col">Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php 
+        if (isset($this->view->listaPrestadores)) {
+          foreach ($this->view->listaPrestadores as $key => $value) { ?>
+            <tr>
+              <th scope="row"><?=$value['id'] ?></th>
+              <td><?=$value['nome'] ?></td>
+              <td><?=$value['endereco'] ?></td>
+              <td><?=$value['telefone'] ?></td>
+              <td style="width: 50px; font-size: 10pt; "><a href="/DadosPrestador?id=<?=$value['id'] ?>">Editar</a></td>
+            </tr>
+        <?php }
+        } ?>          
+      </tbody>
+    </table>
+
+  </div>
+  
+<?php include('../App/Views/index/footer.phtml') ?>

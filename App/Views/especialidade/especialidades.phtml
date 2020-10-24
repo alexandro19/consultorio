@@ -1,0 +1,44 @@
+<?php include('../App/Views/index/header.phtml') ?>
+  
+  <div class="Container">
+
+    <form method="POST" action="/LocalizarEspecialidade">
+      <div class="input-group">
+        <input type="text" name="localizar" class="form-control border-1" placeholder="Localizar especialidades..." aria-label=" Search" aria-describedby="basic-addon2" style="width: 300px" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div> 
+          <div class="col">
+            <a class="btn btn-outline-primary" name="cadastrar" href="/DadosEspecialidade">Nova especialidade</a>
+          </div>
+      </div>
+      
+    </form>
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Especialidade</th>
+          <th scope="col">status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php 
+        if (isset($this->view->listaEspecialidades)) {
+          foreach ($this->view->listaEspecialidades as $key => $value) { ?>
+            <tr>
+              <th scope="row"><?=$value['id'] ?></th>
+              <td><?=$value['descricao'] ?></td>
+              <td><?=$value['STATUS'] ?></td>
+              <td style="width: 50px; font-size: 10pt; "><a href="/DadosEspecialidade?id=<?=$value['id'] ?>">Editar</a></td>
+            </tr>
+        <?php }
+        } ?>          
+      </tbody>
+    </table>
+
+  </div>
+  
+<?php include('../App/Views/index/footer.phtml') ?>
